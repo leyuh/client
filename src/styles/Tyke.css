@@ -1,0 +1,44 @@
+.tyke-div {
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.tyke-div > *:hover {
+    cursor: pointer;
+}
+
+.tyke-img-div {
+    position: relative;
+    height: 120px;
+    width: 120px;
+    background-color: rgb(194, 214, 223);
+    border-radius: 5px;
+    left: 40px;
+    top: 20px;
+}
+
+.tyke-name {
+    position: relative;
+    height: 30px;
+    width: 150px;
+    left: 25px;
+    top: 5px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: rgb(11, 18, 23);
+}
+
+.tyke-gen {
+    position: relative;
+    height: 30px;
+    width: 150px;
+    left: 25px;
+    top: -23px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    color: rgb(64, 70, 79);
+}

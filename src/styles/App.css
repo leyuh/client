@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;700&display=swap');
+
+body {
+    background-color: rgb(127, 168, 184);
+    font-family: "Mukta";
+    overflow: hidden;
+}
+
+#tyke-grid {
+    position: relative;
+    width: calc(100vw - 50px);
+    height: calc(100vh - 150px);
+    left: 25px;
+    top: 125px;
+    background-color: rgb(97, 135, 150);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-radius: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 230px);
+    grid-template-rows: repeat(auto-fill, 230px);
+    justify-items: center;
+    justify-content: center;
+}
