@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
 body {
     background-color: rgb(127, 168, 184);
@@ -6,16 +8,72 @@ body {
     overflow: hidden;
 }
 
+#nav-title {
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 30px;
+    top: -20px;
+    left: 22px;
+    color: white;
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 40px;
+    text-align: left;
+}
+
+@media only screen and (max-width: 750px) {
+    #nav-title {
+        width: 100%;
+        left: 0px;
+        text-align: center;
+    }
+}
+
+#nav-title:hover {
+    cursor: default;
+}
+
+#new-tyke-btn {
+    position: absolute;
+    top: 70px;
+    height: 90px;
+    width: 90px;
+    background-color: rgb(97, 135, 150);
+    border-radius: 12px;
+    left: calc(50% - 45px);
+    background-image: linear-gradient(rgb(141, 213, 152), rgb(73, 164, 87));
+}
+
+#new-tyke-btn:hover {
+    cursor: pointer;
+}
+
+#new-tyke-btn > h1 {
+    position: absolute;
+    font-size: 100px;
+    color: white;
+    font-family: "Montserrat";
+    font-weight: 600;
+    top: -83px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+#new-tyke-btn > h1:hover {
+    cursor: pointer;
+}
+
 #tyke-grid {
     position: relative;
     width: calc(100vw - 50px);
-    height: calc(100vh - 150px);
+    height: calc(100vh - 200px);
     left: 25px;
-    top: 125px;
+    top: 175px;
     background-color: rgb(97, 135, 150);
     overflow-y: scroll;
     overflow-x: hidden;
-    border-radius: 5px;
+    border-radius: 8px;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, 230px);

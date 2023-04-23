@@ -18,7 +18,13 @@ const Tyke = (props) => {
 
     return (<>
         <div className="tyke-div" style={
-            (gender === "male") ? {backgroundColor: "rgb(160, 192, 215)"} : {backgroundColor: "rgb(176, 180, 186)"}
+            (gender === "male") ? {
+                backgroundColor: "rgb(160, 192, 215)",
+                backgroundImage: "linear-gradient(rgb(176, 205, 225), rgb(136, 178, 208))"
+            } : {
+                backgroundColor: "rgb(176, 180, 186)",
+                backgroundImage: "linear-gradient(rgb(207, 198, 206), rgb(188, 166, 182))"
+            }
         }>
             <div className="tyke-img-div">
                 <img src=""/>

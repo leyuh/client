@@ -3,10 +3,13 @@ import { useState, useEffect} from "react";
 import "./styles/App.css";
 
 import Tyke from "./Tyke.js";
+import NewTykeMenu from "./NewTykeMenu.js";
 
 function App() {
 
   const [tykes, setTykes] = useState([]);
+
+  const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
 
   // fetch tykes
   useEffect(() => {
@@ -19,8 +22,18 @@ function App() {
 
   return (
     <div id="App">
+      <h1 id="nav-title">tykes</h1>
+
+      <div id="new-tyke-btn">
+        <h1 onClick={() => {
+          setNewTykeMenuVis(prev => !prev);
+        }}>
+          +
+        </h1>
+      </div>
+
       <div id="tyke-grid">
-        {tykes.map((val, i) => {
+        {tykes.slice(0).reverse().map((val, i) => {
           let {
             firstName,
             lastName,
@@ -42,6 +55,8 @@ function App() {
           />
         })}
       </div>
+
+      {newTykeMenuVis && <NewTykeMenu />}
     </div>
   );
 }
