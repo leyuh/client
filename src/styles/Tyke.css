@@ -24,8 +24,8 @@
 .tyke-name {
     position: relative;
     height: 30px;
-    width: 150px;
-    left: 25px;
+    width: 100%;
+    left: 0px;
     top: 5px;
     text-align: center;
     font-size: 22px;

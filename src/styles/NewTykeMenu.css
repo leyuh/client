@@ -1,34 +1,48 @@
 
 #new-tyke-menu-div {
-    position: absolute;
-    height: 400px;
-    width: 700px;
+    position: fixed;
+    height: 450px;
+    width: 450px;
 
-    top: calc(50% - 200px);
-    left: calc(50vw - 350px);
+    top: calc(50vh - 225px);
+    left: calc(50vw - 225px);
     z-index: 3;
 
-    background-color: green;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #flags-div {
-    height: 100%;
+    height: min-content;
     width: 100%;
-    position: absolute;
+    position: relative;
     left: 0px;
     top: 0px;
-    background-color: red;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    grid-template-rows: repeat(auto-fill, 150px);
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
 }
 
-#flags-div > img {
-    width: 180px;
+.flag-row {
+    position: relative;
+    width: 100%;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0px;
+}
+
+#flags-div > .flag-row > img {
+    width: 80px;
     height: auto;
+    border-radius: 2px;
+    border: 2px solid rgba(5, 5, 10);
+}
+
+#flags-div > .flag-row > img:hover {
+    cursor: pointer;
 }

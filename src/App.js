@@ -7,8 +7,9 @@ import NewTykeMenu from "./NewTykeMenu.js";
 
 function App() {
 
-  const [tykes, setTykes] = useState([]);
+  const ETHNICITIES = ["Russian", "Japanese", "Egyptian", "Irish", "Mexican"];
 
+  const [tykes, setTykes] = useState([]);
   const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
 
   // fetch tykes
@@ -19,6 +20,7 @@ function App() {
       .then(res => res.json())
       .then(data => setTykes(data))
   }, [])
+
 
   return (
     <div id="App">
@@ -56,7 +58,12 @@ function App() {
         })}
       </div>
 
-      {newTykeMenuVis && <NewTykeMenu />}
+      {newTykeMenuVis && <NewTykeMenu 
+        setNewTykeMenuVis={setNewTykeMenuVis}
+        ETHNICITIES={ETHNICITIES}
+        tykes={tykes}
+        setTykes={setTykes}
+      />}
     </div>
   );
 }
