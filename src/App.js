@@ -43,6 +43,8 @@ function App() {
             mother,
             father,
             ethnicity,
+            skinTone,
+            hairColor,
             generation
           } = val;
           return <Tyke
@@ -52,6 +54,8 @@ function App() {
             mother={mother}
             father={father}
             ethnicity={ethnicity}
+            skinTone={skinTone}
+            hairColor={hairColor}
             generation={generation}
             key={i}
           />

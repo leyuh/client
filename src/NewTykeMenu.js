@@ -36,51 +36,72 @@ const NewTykeMenu = (props) => {
 
         let tykeGeneration = oldestCurrentGen + 1;
 
-        // SET NAME
-        let firstNames = [];
-        let lastNames = [];
-
-        // get names
-        fetch("http://localhost:3001/names", {
+        fetch("http://localhost:3001/ethnicities", {
             method: "GET",
         })
             .then(res => res.json())
-            .then(data => {
-                let ethData = [];
-                for (let i = 0; i < data.length; i++) {
-                    if (data[i].ethnicity === eth) {
-                        ethData.push(data[i]);
+            .then(dataA => {
+                // SET SKIN TONE
+                let set;
+                for (let i = 0; i < dataA.length; i++) {
+                    if (dataA[i].ethnicity === eth) {
+                        set = dataA[i];
                     }
                 }
 
-                for (let i = 0; i < ethData.length; i++) {
-                    if (ethData[i].type === "last") {
-                        lastNames.push(ethData[i].name);
-                    } else if (ethData[i].type === tykeGender) {
-                        firstNames.push(ethData[i].name);
-                    }
-                }
+                let tykeSkin = set.skinTone;
 
-                let tykeFirstName = firstNames[(Math.floor(Math.random() * firstNames.length))];
-                let tykeLastName = lastNames[(Math.floor(Math.random() * lastNames.length))];
+                // SET HAIR COLOR
 
+                let tykeHair = set.hairColors[Math.floor(Math.random() * set.hairColors.length)];
 
-                // POST NEW TYKE
-                fetch("http://localhost:3001/new-tyke", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        firstName: tykeFirstName,
-                        lastName: tykeLastName,
-                        gender: tykeGender,
-                        mother: "unknown",
-                        father: "unknown",
-                        ethnicity: tykeEthnicity,
-                        generation: tykeGeneration
-                    })
+                // SET NAME
+                let firstNames = [];
+                let lastNames = [];
+
+                // get names
+                fetch("http://localhost:3001/names", {
+                    method: "GET",
                 })
                     .then(res => res.json())
-                    .then(data => setTykes(data))
+                    .then(data => {
+                        let ethData = [];
+                        for (let i = 0; i < data.length; i++) {
+                            if (data[i].ethnicity === eth) {
+                                ethData.push(data[i]);
+                            }
+                        }
+
+                        for (let i = 0; i < ethData.length; i++) {
+                            if (ethData[i].type === "last") {
+                                lastNames.push(ethData[i].name);
+                            } else if (ethData[i].type === tykeGender) {
+                                firstNames.push(ethData[i].name);
+                            }
+                        }
+
+                        let tykeFirstName = firstNames[(Math.floor(Math.random() * firstNames.length))];
+                        let tykeLastName = lastNames[(Math.floor(Math.random() * lastNames.length))];
+
+                        // POST NEW TYKE
+                        fetch("http://localhost:3001/new-tyke", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                firstName: tykeFirstName,
+                                lastName: tykeLastName,
+                                gender: tykeGender,
+                                mother: "unknown",
+                                father: "unknown",
+                                ethnicity: tykeEthnicity,
+                                skinTone: tykeSkin,
+                                hairColor: tykeHair,
+                                generation: tykeGeneration
+                            })
+                        })
+                            .then(res => res.json())
+                            .then(data => setTykes(data))
+                    })
             })
     }
 

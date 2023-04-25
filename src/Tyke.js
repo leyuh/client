@@ -2,6 +2,9 @@ import {useState} from "react";
 
 import "./styles/Tyke.css";
 
+import Head from "./public/tyke-icons/head.png";
+import Hair from "./public/tyke-icons/hair.png";
+
 const Tyke = (props) => {
 
     const [showPanel, setShowPanel] = useState(false);
@@ -13,6 +16,8 @@ const Tyke = (props) => {
         mother,
         father,
         ethnicity,
+        skinTone,
+        hairColor,
         generation
     } = props;
 
@@ -27,7 +32,18 @@ const Tyke = (props) => {
             }
         }>
             <div className="tyke-img-div">
-                <img src=""/>
+                <img className="tyke-img" id="head-img" src={Head} style={{
+                    backgroundColor: skinTone
+                }}/>
+                <img className="tyke-img" id="hair-img" src={Hair} style={
+                    (gender === "male") ? {
+                        visibility: "hidden",
+                        backgroundColor: hairColor
+                    } : {
+                        visibility: "visible",
+                        backgroundColor: hairColor
+                    }
+                }/>
             </div>
             <h3 className="tyke-name">{firstName} {lastName}</h3>
             <h5 className="tyke-gen">GEN {generation}</h5>

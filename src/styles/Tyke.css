@@ -15,11 +15,22 @@
     position: relative;
     height: 120px;
     width: 120px;
-    background-color: rgb(194, 214, 223);
+    background-color: rgb(231, 237, 240);
     border-radius: 5px;
     left: 40px;
     top: 20px;
 }
+
+.tyke-img {
+    position: absolute;
+    left: 8%;
+    top: 8%;
+    height: 84%;
+    width: 84%;
+    object-fit: contain;
+}
+
+
 
 .tyke-name {
     position: relative;
