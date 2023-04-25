@@ -18,11 +18,24 @@ const Tyke = (props) => {
         ethnicity,
         skinTone,
         hairColor,
-        generation
+        generation,
+        setTykePanelVis
     } = props;
 
     return (<>
-        <div className="tyke-div" style={
+        <div className="tyke-div" onClick={() => {
+            setTykePanelVis({
+                firstName,
+                lastName,
+                gender,
+                mother,
+                father,
+                ethnicity,
+                skinTone,
+                hairColor,
+                generation
+            });
+        }} style={
             (gender === "male") ? {
                 backgroundColor: "rgb(160, 192, 215)",
                 backgroundImage: "linear-gradient(rgb(176, 205, 225), rgb(136, 178, 208))"

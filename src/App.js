@@ -4,6 +4,8 @@ import "./styles/App.css";
 
 import Tyke from "./Tyke.js";
 import NewTykeMenu from "./NewTykeMenu.js";
+import TykePanel from "./TykePanel.js";
+
 
 function App() {
 
@@ -11,6 +13,8 @@ function App() {
 
   const [tykes, setTykes] = useState([]);
   const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
+  const [tykePanelVis, setTykePanelVis] = useState(null);
+  const [currGen, setCurrGen] = useState(0);
 
   // fetch tykes
   useEffect(() => {
@@ -20,6 +24,18 @@ function App() {
       .then(res => res.json())
       .then(data => setTykes(data))
   }, [])
+
+  // update current generation
+  useEffect(() => {
+    let oldestGen = 0;
+    for (let i = 0; i < tykes.length; i++) {
+      if (tykes[i].generation > oldestGen) {
+        oldestGen = tykes[i].generation;
+      }
+    }
+
+    setCurrGen(oldestGen);
+  }, [tykes])
 
 
   return (
@@ -57,6 +73,7 @@ function App() {
             skinTone={skinTone}
             hairColor={hairColor}
             generation={generation}
+            setTykePanelVis={setTykePanelVis}
             key={i}
           />
         })}
@@ -68,6 +85,16 @@ function App() {
         tykes={tykes}
         setTykes={setTykes}
       />}
+
+      {tykePanelVis && <TykePanel
+        tykePanelVis={tykePanelVis}
+        setTykePanelVis={setTykePanelVis} 
+        tykes={tykes}
+        setTykes={setTykes}
+        currGen={currGen}
+        ETHNICITIES={ETHNICITIES}
+      />}
+
     </div>
   );
 }

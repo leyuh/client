@@ -1,10 +1,10 @@
+import "./styles/NewTykeMenu.css";
+
 import Russia from "./public/flag-icons/russia.png";
 import Japan from "./public/flag-icons/japan.png";
 import Egypt from "./public/flag-icons/egypt.png";
 import Ireland from "./public/flag-icons/ireland.png";
 import Mexico from "./public/flag-icons/mexico.png";
-
-import "./styles/NewTykeMenu.css";
 
 const NewTykeMenu = (props) => {
 
@@ -22,8 +22,14 @@ const NewTykeMenu = (props) => {
         }
 
         // SET ETHNICITY
-        let tykeEthnicity = [0, 0, 0, 0, 0];
-        tykeEthnicity[ETHNICITIES.indexOf(eth)] = 1;
+        let tykeEthnicity = {
+            "Russian": 0,
+            "Japanese": 0,
+            "Egyptian": 0,
+            "Irish": 0,
+            "Mexican": 0
+        };
+        tykeEthnicity[eth] = 1;
 
         // SET GENERATION
         let oldestCurrentGen = 0;
