@@ -1,14 +1,16 @@
 
 #new-tyke-menu-div {
     position: fixed;
-    height: 450px;
-    width: 450px;
+    height: 190px;
+    width: 350px;
 
-    top: calc(50vh - 225px);
-    left: calc(50vw - 225px);
+    top: calc(50vh - 95px);
+    left: calc(50vw - 175px);
     z-index: 3;
 
     border-radius: 8px;
+
+    background-color: rgb(127, 168, 184);
 
     display: flex;
     justify-content: center;
@@ -27,12 +29,12 @@
 .flag-row {
     position: relative;
     width: 100%;
-    height: 48px;
+    height: 55px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     margin: 10px 0px;
 }
 
@@ -40,7 +42,7 @@
     width: 80px;
     height: auto;
     border-radius: 2px;
-    border: 2px solid rgba(5, 5, 10);
+    border: 0px solid rgba(5, 5, 10);
 }
 
 #flags-div > .flag-row > img:hover {
