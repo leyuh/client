@@ -121,12 +121,41 @@
     gap: 20px;
 }
 
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
 #tp-circle-div {
     border-radius: 50%;
     border: 3px solid white;
     background-color: goldenrod;
     height: 180px;
     width: 180px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: spin;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+
+}
+
+#tp-circle-div-filler {
+    border-radius: 50%;
+    border: 3px solid white;
+    background-color: rgb(50, 83, 96);
+    height: 100px;
+    width: 100px;
     position: relative;
 }
 
@@ -174,9 +203,36 @@
 #tp-buttons-div {
     width: 100%;
     height: 50px;
+    top: 10px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+}
+
+#tp-buttons-div > button {
+    height: 40px;
+    width: 100px;
+    border: 0px;
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    font-size: 22px;
+}
+
+#tp-buttons-div > button:hover {
+    cursor: pointer;
+}
+
+#rename-btn {
+    background-image: linear-gradient(rgb(232, 216, 126), rgb(230, 201, 58));
+}
+
+#breed-btn {
+    background-image: linear-gradient(0.25turn, rgb(230, 166, 215), rgb(102, 162, 217));
+}
+
+#star-btn {
+    background-image: linear-gradient(rgb(223, 154, 111), rgb(220, 122, 62));
 }

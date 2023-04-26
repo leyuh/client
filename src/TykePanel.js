@@ -64,7 +64,7 @@ const TykePanel = (props) => {
         for (let i = 0; i < displayedEthnicities.length; i++) {
             let eth = displayedEthnicities[i]
             if (ethnicity[eth] == 0) continue;
-            let newItem = `${ETH_COLORS[eth]} calc(3.6deg * ${last}) calc(3.6deg * ${ethnicity[eth] * 100})`;
+            let newItem = `${ETH_COLORS[eth]} calc(3.6deg * ${last}) calc(3.6deg * ${(ethnicity[eth] * 100) + last})`;
             displaySeq.push(newItem);
             last += ethnicity[eth] * 100;
         }
@@ -74,10 +74,13 @@ const TykePanel = (props) => {
         `;
         
         for (let i = 0; i < displaySeq.length; i++) {
-            gradient += ` ${displaySeq[i]},`;
+            gradient += ` ${displaySeq[i]}`;
+            if (i != displaySeq.length - 1) {
+                gradient += ",";
+            }
         }
         gradient += ")";
-        console.log(gradient);
+
         setCircleGradient(gradient);
 
     }, [])
@@ -127,7 +130,9 @@ const TykePanel = (props) => {
         <div id="tp-ethnicity-div">
             <div id="tp-circle-div" style={{
                 background: circleGradient
-            }}/>
+            }}>
+                <div id="tp-circle-div-filler"/>
+            </div>
 
             <div id="tp-key-div">
                 {displayedEthnicities.map((val, i) => {

@@ -11,11 +11,11 @@ function App() {
 
   const ETHNICITIES = ["Russian", "Japanese", "Egyptian", "Irish", "Mexican"];
   const ETH_COLORS = {
-    "Russian": "#2c4582",
-    "Japanese": "#a31d1d",
-    "Egyptian": "#c76e2e",
-    "Irish": "#5db54e",
-    "Mexican": "#1b5c1e"
+    "Russian": "#4c72ad",
+    "Japanese": "#e8e8e8",
+    "Egyptian": "#242424",
+    "Irish": "#3c8034",
+    "Mexican": "#a32a2a"
   }
 
   const [tykes, setTykes] = useState([]);
