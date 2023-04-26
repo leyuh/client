@@ -10,6 +10,13 @@ import TykePanel from "./TykePanel.js";
 function App() {
 
   const ETHNICITIES = ["Russian", "Japanese", "Egyptian", "Irish", "Mexican"];
+  const ETH_COLORS = {
+    "Russian": "#2c4582",
+    "Japanese": "#a31d1d",
+    "Egyptian": "#c76e2e",
+    "Irish": "#5db54e",
+    "Mexican": "#1b5c1e"
+  }
 
   const [tykes, setTykes] = useState([]);
   const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
@@ -93,6 +100,7 @@ function App() {
         setTykes={setTykes}
         currGen={currGen}
         ETHNICITIES={ETHNICITIES}
+        ETH_COLORS={ETH_COLORS}
       />}
 
     </div>
