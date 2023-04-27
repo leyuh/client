@@ -221,6 +221,27 @@
     font-size: 22px;
 }
 
+@media only screen and (max-width: 450px) {
+    #tp-buttons-div > button {
+        width: 85px;
+    }
+
+    #tp-circle-div {
+        height: 140px;
+        width: 140px;
+        left: 10px;
+    }
+
+    #tp-circle-div-filler {
+        height: 80px;
+        width: 80px;
+    }
+
+    .key-label > div > img {
+        right: 5px;
+    }
+}
+
 #tp-buttons-div > button:hover {
     cursor: pointer;
 }
@@ -235,4 +256,78 @@
 
 #star-btn {
     background-image: linear-gradient(rgb(223, 154, 111), rgb(220, 122, 62));
+}
+
+#rename-panel {
+    position: absolute;
+    z-index: 5;
+    background-color: rgb(127, 168, 184);
+    border: 5px solid white;
+    border-radius: 8px;
+    
+    height: 220px;
+    width: 260px;
+    top: calc(50% - 100px);
+    left: calc(50% - 125px);
+}
+
+#rename-x-btn {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    left: 0px;
+    top: -3px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    font-size: 30px;
+    font-family: "Montserrat";
+    font-weight: 600;
+}
+
+#rename-x-btn:hover {
+    cursor: pointer;
+}
+
+#rename-panel > h3 {
+    color: white;
+    position: relative;
+    margin-bottom: -30px;
+    top: -25px;
+    left: 15px;
+    font-size: 20px;
+}
+
+#rename-panel > input {
+    position: relative;
+    font-family: inherit;
+    font-size: 18px;
+    color: white;
+    padding: 5px;
+    background-color: rgb(97, 135, 150);
+    border: 0px;
+    border-radius: 3px;
+    height: 25px;
+    width: 240px;
+    left: 5px;
+    margin-bottom: 15px;
+}
+
+#rename-save-btn {
+    height: 35px;
+    width: 75px;
+    border: 0px;
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+    font-size: 20px;
+    position: relative;
+    left: calc(50% - 37.5px);
+    top: -8px;
+    line-height: 20px;
+    background-image: linear-gradient(rgb(141, 213, 152), rgb(73, 164, 87));
+}
+
+#rename-save-btn:hover {
+    cursor: pointer;
 }

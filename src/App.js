@@ -60,6 +60,7 @@ function App() {
       <div id="tyke-grid">
         {tykes.slice(0).reverse().map((val, i) => {
           let {
+            _id,
             firstName,
             lastName,
             gender,
@@ -71,6 +72,7 @@ function App() {
             generation
           } = val;
           return <Tyke
+            _id={_id}
             firstName={firstName}
             lastName={lastName}
             gender={gender}

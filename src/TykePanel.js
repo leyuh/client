@@ -16,8 +16,12 @@ const TykePanel = (props) => {
 
     const [topFlags, setTopFlags] = useState([]);
     const [circleGradient, setCircleGradient] = useState("");
+    
+    const [showRenamePanel, setShowRenamePanel] = useState(false);
+
 
     let {
+        _id,
         firstName,
         lastName,
         gender,
@@ -28,6 +32,9 @@ const TykePanel = (props) => {
         hairColor,
         generation
     } = tykePanelVis;
+
+    const [newFirstName, setNewFirstName] = useState(firstName);
+    const [newLastName, setNewLastName] = useState(lastName);
 
     let minAge = (currGen - generation) * 15;
     let maxAge = minAge + 15;
@@ -86,76 +93,103 @@ const TykePanel = (props) => {
     }, [])
 
 
-    return <div id="tyke-panel">
-        <button id="tp-x-btn" onClick={() => {setTykePanelVis(null)}}>x</button>
-        <h1 id="tp-name-label">{firstName} {lastName}</h1>
-        <div id="tp-flags-div">
-            {topFlags.map((val, i) => {
-                return <img src={val} key={i} />
-            })}
-        </div>
-        <div id="tp-info-div">
-            <div>
-                <h5 className="label">generation:</h5>
-                <h5 className="value">{generation} (age {minAge} - {maxAge})</h5>
-            </div>
-
-            <div>
-                <h5 className="label">gender:</h5>
-                <h5 className="value">{gender}</h5>
-            </div>
-
-            <div>
-                <h5 className="label">mother:</h5>
-                <h5 className="value">{mother}</h5>
-            </div>
-
-            <div>
-                <h5 className="label">father:</h5>
-                <h5 className="value">{father}</h5>
-            </div>
-
-            <div>
-                <h5 className="label">skin tone:</h5>
-                <h5 className="value">{skinTone}</h5>
-            </div>
-
-            <div>
-                <h5 className="label">hair color:</h5>
-                <h5 className="value">{hairColor}</h5>
-            </div>
-
-        </div>
-
-        <div id="tp-ethnicity-div">
-            <div id="tp-circle-div" style={{
-                background: circleGradient
-            }}>
-                <div id="tp-circle-div-filler"/>
-            </div>
-
-            <div id="tp-key-div">
-                {displayedEthnicities.map((val, i) => {
-                    return <div className="key-label" key={i}>
-                        <div>
-                            <h5>{val}</h5>
-                            <img src={FLAGS[ETHNICITIES.indexOf(val)]} />
-                        </div>
-                        <h5 style={{
-                            color: ETH_COLORS[val]
-                        }}>{ethnicity[val] * 100}%</h5>
-                    </div>
+    return <>
+        <div id="tyke-panel">
+            <button id="tp-x-btn" onClick={() => {setTykePanelVis(null)}}>x</button>
+            <h1 id="tp-name-label">{newFirstName} {newLastName}</h1>
+            <div id="tp-flags-div">
+                {topFlags.map((val, i) => {
+                    return <img src={val} key={i} />
                 })}
             </div>
+            <div id="tp-info-div">
+                <div>
+                    <h5 className="label">generation:</h5>
+                    <h5 className="value">{generation} (age {minAge} - {maxAge})</h5>
+                </div>
+
+                <div>
+                    <h5 className="label">gender:</h5>
+                    <h5 className="value">{gender}</h5>
+                </div>
+
+                <div>
+                    <h5 className="label">mother:</h5>
+                    <h5 className="value">{mother}</h5>
+                </div>
+
+                <div>
+                    <h5 className="label">father:</h5>
+                    <h5 className="value">{father}</h5>
+                </div>
+
+                <div>
+                    <h5 className="label">skin tone:</h5>
+                    <h5 className="value">{skinTone}</h5>
+                </div>
+
+                <div>
+                    <h5 className="label">hair color:</h5>
+                    <h5 className="value">{hairColor}</h5>
+                </div>
+
+            </div>
+
+            <div id="tp-ethnicity-div">
+                <div id="tp-circle-div" style={{
+                    background: circleGradient
+                }}>
+                    <div id="tp-circle-div-filler"/>
+                </div>
+
+                <div id="tp-key-div">
+                    {displayedEthnicities.map((val, i) => {
+                        return <div className="key-label" key={i}>
+                            <div>
+                                <h5>{val}</h5>
+                                <img src={FLAGS[ETHNICITIES.indexOf(val)]} />
+                            </div>
+                            <h5 style={{
+                                color: ETH_COLORS[val]
+                            }}>{ethnicity[val] * 100}%</h5>
+                        </div>
+                    })}
+                </div>
+            </div>
+
+            <div id="tp-buttons-div">
+                <button id="rename-btn" onClick={() => setShowRenamePanel(prev => !prev)}>rename</button>
+                <button id="breed-btn">breed</button>
+                <button id="star-btn">star</button>
+            </div>
         </div>
 
-        <div id="tp-buttons-div">
-            <button id="rename-btn">rename</button>
-            <button id="breed-btn">breed</button>
-            <button id="star-btn">star</button>
-        </div>
-    </div>
-
+        {showRenamePanel && <div id="rename-panel">
+            <button id="rename-x-btn" onClick={() => {
+                setShowRenamePanel(false);
+            }}>x</button>
+            <h3>first name</h3>
+            <input id="first-name-input" defaultValue={firstName} onChange={(e) => setNewFirstName(e.target.value)}/>
+            <h3>last name</h3>
+            <input id="last-name-input" defaultValue={lastName} onChange={(e) => setNewLastName(e.target.value)}/>
+            <button id="rename-save-btn" onClick={() => {
+                fetch("http://localhost:3001/rename-tyke", {
+                    method: "PUT",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        _id: _id,
+                        newFirstName: newFirstName,
+                        newLastName: newLastName
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        setTykes(data);
+                        setShowRenamePanel(false);
+                    })
+            }}>save</button>
+        </div>}
+    </>
 }
 
 export default TykePanel;

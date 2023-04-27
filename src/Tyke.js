@@ -10,6 +10,7 @@ const Tyke = (props) => {
     const [showPanel, setShowPanel] = useState(false);
 
     const {
+        _id,
         firstName,
         lastName,
         gender,
@@ -25,6 +26,7 @@ const Tyke = (props) => {
     return (<>
         <div className="tyke-div" onClick={() => {
             setTykePanelVis({
+                _id,
                 firstName,
                 lastName,
                 gender,
