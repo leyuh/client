@@ -23,6 +23,22 @@ function App() {
   const [tykePanelVis, setTykePanelVis] = useState(null);
   const [currGen, setCurrGen] = useState(0);
 
+  const [starredTykes, setStarredTykes] = useState([]);
+
+
+  // check local storage for starred tykes
+  useEffect(() => {
+    let data = localStorage.getItem("starredTykes");
+    if (data != "" && data != null) {
+      setStarredTykes(data.split(","));
+    }
+  }, []);
+
+  // set local storage when starred tykes changes
+useEffect(() => {
+  localStorage.setItem("starredTykes", starredTykes.toString());
+}, [starredTykes])
+
   // fetch tykes
   useEffect(() => {
     fetch("http://localhost:3001/", {
@@ -83,6 +99,7 @@ function App() {
             hairColor={hairColor}
             generation={generation}
             setTykePanelVis={setTykePanelVis}
+            starredTykes={starredTykes}
             key={i}
           />
         })}
@@ -103,6 +120,8 @@ function App() {
         currGen={currGen}
         ETHNICITIES={ETHNICITIES}
         ETH_COLORS={ETH_COLORS}
+        starredTykes={starredTykes}
+        setStarredTykes={setStarredTykes}
       />}
 
     </div>

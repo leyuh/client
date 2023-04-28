@@ -11,6 +11,13 @@
     cursor: pointer;
 }
 
+#star-icon {
+    height: 25px;
+    width: 25px;
+    margin: 8px;
+    float: right;
+}
+
 .tyke-img-div {
     position: relative;
     height: 120px;

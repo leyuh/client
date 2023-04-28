@@ -10,7 +10,17 @@ import Mexico from "./public/flag-icons/mexico.png";
 
 const TykePanel = (props) => {
 
-    const { tykePanelVis, setTykePanelVis, tykes, setTykes, currGen, ETHNICITIES, ETH_COLORS} = props;
+    const { 
+        tykePanelVis, 
+        setTykePanelVis, 
+        tykes, 
+        setTykes, 
+        currGen, 
+        ETHNICITIES, 
+        ETH_COLORS,
+        starredTykes,
+        setStarredTykes
+    } = props;
 
     const FLAGS = [Russia, Japan, Egypt, Ireland, Mexico];
 
@@ -70,7 +80,7 @@ const TykePanel = (props) => {
 
         for (let i = 0; i < displayedEthnicities.length; i++) {
             let eth = displayedEthnicities[i]
-            if (ethnicity[eth] == 0) continue;
+            if (ethnicity[eth] === 0) continue;
             let newItem = `${ETH_COLORS[eth]} calc(3.6deg * ${last}) calc(3.6deg * ${(ethnicity[eth] * 100) + last})`;
             displaySeq.push(newItem);
             last += ethnicity[eth] * 100;
@@ -82,7 +92,7 @@ const TykePanel = (props) => {
         
         for (let i = 0; i < displaySeq.length; i++) {
             gradient += ` ${displaySeq[i]}`;
-            if (i != displaySeq.length - 1) {
+            if (i !== displaySeq.length - 1) {
                 gradient += ",";
             }
         }
@@ -160,7 +170,17 @@ const TykePanel = (props) => {
             <div id="tp-buttons-div">
                 <button id="rename-btn" onClick={() => setShowRenamePanel(prev => !prev)}>rename</button>
                 <button id="breed-btn">breed</button>
-                <button id="star-btn">star</button>
+                <button id="star-btn" onClick={() => {
+                    if (starredTykes.includes(_id)) {
+                        let newArr = starredTykes.filter(val => val != _id);
+                        console.log(newArr);
+                        setStarredTykes(newArr);
+                    } else {
+                        let newArr = [...starredTykes, _id];
+                        console.log(newArr);
+                        setStarredTykes(newArr);
+                    }
+                }}>{starredTykes.includes(_id) ? "unstar" : "star"}</button>
             </div>
         </div>
 

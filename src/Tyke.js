@@ -1,13 +1,12 @@
-import {useState} from "react";
 
 import "./styles/Tyke.css";
 
 import Head from "./public/tyke-icons/head.png";
 import Hair from "./public/tyke-icons/hair.png";
 
-const Tyke = (props) => {
+import Star from "./public/star.png";
 
-    const [showPanel, setShowPanel] = useState(false);
+const Tyke = (props) => {
 
     const {
         _id,
@@ -20,7 +19,8 @@ const Tyke = (props) => {
         skinTone,
         hairColor,
         generation,
-        setTykePanelVis
+        setTykePanelVis,
+        starredTykes
     } = props;
 
     return (<>
@@ -46,6 +46,8 @@ const Tyke = (props) => {
                 backgroundImage: "linear-gradient(rgb(207, 198, 206), rgb(188, 166, 182))"
             }
         }>
+            {starredTykes.includes(_id) ? <img id="star-icon" src={Star} /> : ""}
+
             <div className="tyke-img-div">
                 <img className="tyke-img" id="head-img" src={Head} style={{
                     backgroundColor: skinTone
@@ -64,9 +66,7 @@ const Tyke = (props) => {
             <h5 className="tyke-gen">GEN {generation}</h5>
         </div>
 
-        {showPanel && <div className="tyke-info-panel">
-            
-        </div>}
+
     </>)
 }
 
