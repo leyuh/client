@@ -29,6 +29,77 @@ body {
     }
 }
 
+#main-btns-div {
+    position: fixed;
+    width: 400px;
+    height: 55px;
+    right: 5px;
+    top: 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+}
+
+#main-btns-div > div {
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#current-gen-wrapper > h5 {
+    color: white;
+    font-family: "Mukta";
+    font-weight: 700;
+    font-size: 16px;
+    width: 85px;
+    text-align: center;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+}
+
+#current-gen-wrapper:hover {
+    cursor: default;
+}
+
+#current-gen-wrapper > div:hover + h5 {
+    visibility: visible;
+}
+
+
+#current-gen-wrapper > div {
+    height: 55px;
+    width: 55px;
+    border-radius: 8px;
+}
+
+#curr-gen-display {
+    color: white;
+    font-family: "Mukta";
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+    position: relative;
+    top: -32px;
+}
+
+#graveyard-div {
+    border-radius: 8px;
+}
+
+#graveyard-div:hover {
+    cursor: pointer;
+}
+
+#graveyard-div > img {
+    height: 35px;
+    width: 35px;
+}
+
 #nav-title:hover {
     cursor: default;
 }

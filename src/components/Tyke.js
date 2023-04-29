@@ -1,10 +1,10 @@
 
-import "./styles/Tyke.css";
+import "../styles/Tyke.css";
 
-import Head from "./public/tyke-icons/head.png";
-import Hair from "./public/tyke-icons/hair.png";
+import Head from "../public/tyke-icons/head.png";
+import Hair from "../public/tyke-icons/hair.png";
 
-import Star from "./public/star.png";
+import Star from "../public/star.png";
 
 const Tyke = (props) => {
 

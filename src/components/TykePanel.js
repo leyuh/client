@@ -1,12 +1,12 @@
-import "./styles/TykePanel.css";
+import "../styles/TykePanel.css";
 
 import { useEffect, useState } from "react";
 
-import Russia from "./public/flag-icons/russia.png";
-import Japan from "./public/flag-icons/japan.png";
-import Egypt from "./public/flag-icons/egypt.png";
-import Ireland from "./public/flag-icons/ireland.png";
-import Mexico from "./public/flag-icons/mexico.png";
+import Russia from "../public/flag-icons/russia.png";
+import Japan from "../public/flag-icons/japan.png";
+import Egypt from "../public/flag-icons/egypt.png";
+import Ireland from "../public/flag-icons/ireland.png";
+import Mexico from "../public/flag-icons/mexico.png";
 
 const TykePanel = (props) => {
 

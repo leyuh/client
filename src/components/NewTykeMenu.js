@@ -1,10 +1,10 @@
-import "./styles/NewTykeMenu.css";
+import "../styles/NewTykeMenu.css";
 
-import Russia from "./public/flag-icons/russia.png";
-import Japan from "./public/flag-icons/japan.png";
-import Egypt from "./public/flag-icons/egypt.png";
-import Ireland from "./public/flag-icons/ireland.png";
-import Mexico from "./public/flag-icons/mexico.png";
+import Russia from "../public/flag-icons/russia.png";
+import Japan from "../public/flag-icons/japan.png";
+import Egypt from "../public/flag-icons/egypt.png";
+import Ireland from "../public/flag-icons/ireland.png";
+import Mexico from "../public/flag-icons/mexico.png";
 
 const NewTykeMenu = (props) => {
 
@@ -13,13 +13,24 @@ const NewTykeMenu = (props) => {
     const clickHandler = (eth) => {
         setNewTykeMenuVis(false);
 
-        // SET RANDOM GENDER
+        // SET GENDER
         let tykeGender = "male";
 
         let chance = Math.round(Math.random());
         if (chance === 1) {
             tykeGender = "female";
         }
+
+        let allMale = true;
+        let allFemale = true;
+
+        for (let i = 0; i < tykes.length; i++) {
+            if (tykes[i].gender == "male") {allFemale = false}
+            else if (tykes[i].gender == "female") {allMale = false}
+        }
+
+        if (allMale) {console.log("all male"); tykeGender = "female"}
+        if (allFemale) {console.log("all female"); tykeGender = "male"}
 
         // SET ETHNICITY
         let tykeEthnicity = {
@@ -40,7 +51,7 @@ const NewTykeMenu = (props) => {
             }
         }
 
-        let tykeGeneration = oldestCurrentGen + 1;
+        let tykeGeneration = oldestCurrentGen;
 
         fetch("http://localhost:3001/ethnicities", {
             method: "GET",

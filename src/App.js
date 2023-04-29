@@ -2,9 +2,15 @@ import { useState, useEffect} from "react";
 
 import "./styles/App.css";
 
-import Tyke from "./Tyke.js";
-import NewTykeMenu from "./NewTykeMenu.js";
-import TykePanel from "./TykePanel.js";
+import Tyke from "./components/Tyke.js";
+import NewTykeMenu from "./components/NewTykeMenu.js";
+import TykePanel from "./components/TykePanel.js";
+
+import GraveIcon from "./public/grave-icon.png";
+import HeadIcon from "./public/head-icon.png";
+
+import HomePage from "./pages/HomePage";
+import GraveyardPage from "./pages/GraveyardPage";
 
 
 function App() {
@@ -22,6 +28,8 @@ function App() {
   const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
   const [tykePanelVis, setTykePanelVis] = useState(null);
   const [currGen, setCurrGen] = useState(0);
+
+  const [currPage, setCurrPage] = useState("home");
 
   const [starredTykes, setStarredTykes] = useState([]);
 
@@ -65,64 +73,50 @@ useEffect(() => {
     <div id="App">
       <h1 id="nav-title">tykes</h1>
 
-      <div id="new-tyke-btn">
-        <h1 onClick={() => {
-          setNewTykeMenuVis(prev => !prev);
-        }}>
-          +
-        </h1>
+      <div id="main-btns-div">
+
+        <div id="current-gen-wrapper">
+          <div style={
+            currPage === "home" ? {backgroundColor: "rgb(50, 83, 96)"} : {backgroundColor: "#999"}
+          }>
+            <h2 id="curr-gen-display">{currGen}</h2>
+          </div>
+          <h5>current gen</h5>
+        </div>
+
+        <div id="graveyard-div" style={
+          currPage === "home" ? {backgroundColor: "rgb(50, 83, 96)"} : {backgroundColor: "#999"}
+        }>
+          <img src={currPage == "home" ? GraveIcon : HeadIcon} onClick={() => {
+            if (currPage == "home") {
+              setCurrPage("graveyard");
+              document.body.style.backgroundColor = "rgb(93, 120, 93)";
+            } else {
+              setCurrPage("home");
+              document.body.style.backgroundColor = "rgb(127, 168, 184)";
+            }
+          }} />
+        </div>
+
       </div>
 
-      <div id="tyke-grid">
-        {tykes.slice(0).reverse().map((val, i) => {
-          let {
-            _id,
-            firstName,
-            lastName,
-            gender,
-            mother,
-            father,
-            ethnicity,
-            skinTone,
-            hairColor,
-            generation
-          } = val;
-          return <Tyke
-            _id={_id}
-            firstName={firstName}
-            lastName={lastName}
-            gender={gender}
-            mother={mother}
-            father={father}
-            ethnicity={ethnicity}
-            skinTone={skinTone}
-            hairColor={hairColor}
-            generation={generation}
-            setTykePanelVis={setTykePanelVis}
-            starredTykes={starredTykes}
-            key={i}
-          />
-        })}
-      </div>
-
-      {newTykeMenuVis && <NewTykeMenu 
+      {currPage == "home" ? <HomePage 
+        tykes={tykes}
+        setTykes={setTykes}
+        newTykeMenuVis={newTykeMenuVis}
         setNewTykeMenuVis={setNewTykeMenuVis}
-        ETHNICITIES={ETHNICITIES}
-        tykes={tykes}
-        setTykes={setTykes}
-      />}
-
-      {tykePanelVis && <TykePanel
         tykePanelVis={tykePanelVis}
-        setTykePanelVis={setTykePanelVis} 
-        tykes={tykes}
-        setTykes={setTykes}
+        setTykePanelVis={setTykePanelVis}
+        starredTykes={starredTykes}
+        setStarredTykes={setStarredTykes}
         currGen={currGen}
         ETHNICITIES={ETHNICITIES}
         ETH_COLORS={ETH_COLORS}
-        starredTykes={starredTykes}
-        setStarredTykes={setStarredTykes}
+      /> : <GraveyardPage 
+      
       />}
+
+      
 
     </div>
   );
