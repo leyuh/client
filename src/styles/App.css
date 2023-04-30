@@ -21,13 +21,6 @@ body {
     text-align: left;
 }
 
-@media only screen and (max-width: 750px) {
-    #nav-title {
-        width: 100%;
-        left: 0px;
-        text-align: center;
-    }
-}
 
 #main-btns-div {
     position: fixed;
@@ -61,17 +54,38 @@ body {
     top: 25px;
     visibility: hidden;
 }
+#current-pop-wrapper > h5 {
+    color: white;
+    font-family: "Mukta";
+    font-weight: 700;
+    font-size: 16px;
+    width: 85px;
+    text-align: center;
+    position: absolute;
+    top: 25px;
+    visibility: hidden;
+}
 
 #current-gen-wrapper:hover {
+    cursor: default;
+}
+#current-pop-wrapper:hover {
     cursor: default;
 }
 
 #current-gen-wrapper > div:hover + h5 {
     visibility: visible;
 }
-
+#current-pop-wrapper > div:hover + h5 {
+    visibility: visible;
+}
 
 #current-gen-wrapper > div {
+    height: 55px;
+    width: 55px;
+    border-radius: 8px;
+}
+#current-pop-wrapper > div {
     height: 55px;
     width: 55px;
     border-radius: 8px;
@@ -81,10 +95,19 @@ body {
     color: white;
     font-family: "Mukta";
     font-weight: 700;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     position: relative;
-    top: -32px;
+    top: -13px;
+}
+#curr-pop-display {
+    color: white;
+    font-family: "Mukta";
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    top: -13px;
 }
 
 #graveyard-div {
@@ -161,4 +184,5 @@ body {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 5;
+    pointer-events: none;
 }

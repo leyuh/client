@@ -184,13 +184,12 @@ const TykePanel = (props) => {
 
                 }}>breed</button>
                 <button id="star-btn" onClick={() => {
+                    setTykePanelVis(null);
                     if (starredTykes.includes(_id)) {
                         let newArr = starredTykes.filter(val => val !== _id);
-                        console.log(newArr);
                         setStarredTykes(newArr);
                     } else {
                         let newArr = [...starredTykes, _id];
-                        console.log(newArr);
                         setStarredTykes(newArr);
                     }
                 }}>{starredTykes.includes(_id) ? "unstar" : "star"}</button>

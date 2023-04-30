@@ -53,6 +53,10 @@
     font-weight: 400;
 }
 
+#tp-name-label:hover {
+    cursor: default;
+}
+
 #tp-flags-div {
     position: relative;
     left: 0px;
@@ -92,6 +96,10 @@
     margin: 10px;
 }
 
+#tp-info-div > div > *:hover {
+    cursor: default;
+}
+
 .label {
     width: 35%;
     text-align: left;
@@ -107,6 +115,13 @@
     top: -40%;
     position: relative;
     color: white;
+}
+
+@media only screen and (max-width: 450px) {
+    .value {
+        font-size: 16px;
+        top: -18%;
+    }
 }
 
 #tp-ethnicity-div {
@@ -173,6 +188,10 @@
     height: 40px;
     margin-bottom: -25px;
     margin-top: -25px;
+}
+
+.key-label > *:hover {
+    cursor: default;
 }
 
 .key-label > div {

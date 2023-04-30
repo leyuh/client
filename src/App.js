@@ -69,13 +69,29 @@ function App() {
     setCurrGen(oldestGen);
   }, [tykes])
 
+  window.onclick = e => {
+    if (choosingBreeder) {
+      if (e.target.id == "home-page" || e.target.id == "tyke-grid") {
+        setChoosingBreeder(null)
+      }
+    }
+  }
 
   return (
     <div id="App">
-      {choosingBreeder && <div id="shade-div" onClick={() => setChoosingBreeder(null)}/>}
+      {choosingBreeder && <div id="shade-div" />}
       <h1 id="nav-title">tykes</h1>
 
       <div id="main-btns-div">
+
+      <div id="current-pop-wrapper">
+        <div style={
+          currPage === "home" ? {backgroundColor: "rgb(50, 83, 96)"} : {backgroundColor: "#999"}
+        }>
+          <h2 id="curr-pop-display">{tykes.length}</h2>
+        </div>
+        <h5>population</h5>
+      </div>
 
         <div id="current-gen-wrapper">
           <div style={
