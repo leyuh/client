@@ -8,7 +8,7 @@ import Mexico from "../public/flag-icons/mexico.png";
 
 const NewTykeMenu = (props) => {
 
-    const { setNewTykeMenuVis, ETHNICITIES, tykes, setTykes } = props;
+    const { setNewTykeMenuVis, ETHNICITIES, tykes, setTykes, currGen } = props;
 
     const clickHandler = (eth) => {
         setNewTykeMenuVis(false);
@@ -25,12 +25,12 @@ const NewTykeMenu = (props) => {
         let allFemale = true;
 
         for (let i = 0; i < tykes.length; i++) {
-            if (tykes[i].gender == "male") {allFemale = false}
-            else if (tykes[i].gender == "female") {allMale = false}
+            if (tykes[i].gender == "male" && tykes[i].generation == currGen) {allFemale = false}
+            else if (tykes[i].gender == "female" && tykes[i].generation == currGen) {allMale = false}
         }
 
-        if (allMale) {console.log("all male"); tykeGender = "female"}
-        if (allFemale) {console.log("all female"); tykeGender = "male"}
+        if (allMale) {tykeGender = "female"}
+        if (allFemale) {tykeGender = "male"}
 
         // SET ETHNICITY
         let tykeEthnicity = {

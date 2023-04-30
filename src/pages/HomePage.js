@@ -16,6 +16,9 @@ const HomePage = (props) => {
         starredTykes,
         setStarredTykes,
 
+        choosingBreeder,
+        setChoosingBreeder,
+
         currGen,
 
         ETHNICITIES,
@@ -58,6 +61,12 @@ const HomePage = (props) => {
             generation={generation}
             setTykePanelVis={setTykePanelVis}
             starredTykes={starredTykes}
+            choosingBreeder={choosingBreeder}
+            setChoosingBreeder={setChoosingBreeder}
+            tykes={tykes}
+            setTykes={setTykes}
+            ETHNICITIES={ETHNICITIES}
+            currGen={currGen}
             key={i}
           />
         })}
@@ -68,6 +77,7 @@ const HomePage = (props) => {
         ETHNICITIES={ETHNICITIES}
         tykes={tykes}
         setTykes={setTykes}
+        currGen={currGen}
       />}
 
       {tykePanelVis && <TykePanel
@@ -80,6 +90,7 @@ const HomePage = (props) => {
         ETH_COLORS={ETH_COLORS}
         starredTykes={starredTykes}
         setStarredTykes={setStarredTykes}
+        setChoosingBreeder={setChoosingBreeder}
       />}
     </div>
 }

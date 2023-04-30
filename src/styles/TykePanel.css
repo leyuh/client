@@ -8,7 +8,7 @@
     top: calc(50% - 300px);
     left: calc(50% - 200px);
 
-    z-index: 5;
+    z-index: 8;
     background-color: rgb(50, 83, 96);
     border-radius: 8px;
     font-family: "Mukta";

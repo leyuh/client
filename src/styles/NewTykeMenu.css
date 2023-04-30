@@ -13,6 +13,7 @@
 
     background-color: rgb(50, 83, 96);
 
+    z-index: 8;
     display: flex;
     justify-content: center;
     align-items: center;

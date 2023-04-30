@@ -28,6 +28,7 @@ function App() {
   const [newTykeMenuVis, setNewTykeMenuVis] = useState(false);
   const [tykePanelVis, setTykePanelVis] = useState(null);
   const [currGen, setCurrGen] = useState(0);
+  const [choosingBreeder, setChoosingBreeder] = useState(null);
 
   const [currPage, setCurrPage] = useState("home");
 
@@ -43,9 +44,9 @@ function App() {
   }, []);
 
   // set local storage when starred tykes changes
-useEffect(() => {
-  localStorage.setItem("starredTykes", starredTykes.toString());
-}, [starredTykes])
+  useEffect(() => {
+    localStorage.setItem("starredTykes", starredTykes.toString());
+  }, [starredTykes])
 
   // fetch tykes
   useEffect(() => {
@@ -71,6 +72,7 @@ useEffect(() => {
 
   return (
     <div id="App">
+      {choosingBreeder && <div id="shade-div" onClick={() => setChoosingBreeder(null)}/>}
       <h1 id="nav-title">tykes</h1>
 
       <div id="main-btns-div">
@@ -109,6 +111,8 @@ useEffect(() => {
         setTykePanelVis={setTykePanelVis}
         starredTykes={starredTykes}
         setStarredTykes={setStarredTykes}
+        choosingBreeder={choosingBreeder}
+        setChoosingBreeder={setChoosingBreeder}
         currGen={currGen}
         ETHNICITIES={ETHNICITIES}
         ETH_COLORS={ETH_COLORS}

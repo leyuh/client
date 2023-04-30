@@ -19,7 +19,8 @@ const TykePanel = (props) => {
         ETHNICITIES, 
         ETH_COLORS,
         starredTykes,
-        setStarredTykes
+        setStarredTykes,
+        setChoosingBreeder
     } = props;
 
     const FLAGS = [Russia, Japan, Egypt, Ireland, Mexico];
@@ -40,7 +41,8 @@ const TykePanel = (props) => {
         ethnicity,
         skinTone,
         hairColor,
-        generation
+        generation,
+        key
     } = tykePanelVis;
 
     const [newFirstName, setNewFirstName] = useState(firstName);
@@ -161,7 +163,7 @@ const TykePanel = (props) => {
                             </div>
                             <h5 style={{
                                 color: ETH_COLORS[val]
-                            }}>{ethnicity[val] * 100}%</h5>
+                            }}>{(ethnicity[val] * 100).toFixed(2)}%</h5>
                         </div>
                     })}
                 </div>
@@ -169,10 +171,21 @@ const TykePanel = (props) => {
 
             <div id="tp-buttons-div">
                 <button id="rename-btn" onClick={() => setShowRenamePanel(prev => !prev)}>rename</button>
-                <button id="breed-btn">breed</button>
+                <button id="breed-btn" onClick={() => {
+                    setTykePanelVis(null);
+                    setChoosingBreeder(_id);
+
+                    for (let i = 0; i < tykes.length; i++) {
+                        document.getElementById(tykes[i]._id).style.zIndex = 4;
+                        if (tykes[i].gender !== gender && tykes[i].generation === generation && (tykes[i].mother !== mother || (tykes[i].mother === "unknown" || mother === "unknown")) && (tykes[i].father !== father || (tykes[i].father === "unknown" || father === "unknown"))) {
+                            document.getElementById(tykes[i]._id).style.zIndex = 6;
+                        }
+                    }
+
+                }}>breed</button>
                 <button id="star-btn" onClick={() => {
                     if (starredTykes.includes(_id)) {
-                        let newArr = starredTykes.filter(val => val != _id);
+                        let newArr = starredTykes.filter(val => val !== _id);
                         console.log(newArr);
                         setStarredTykes(newArr);
                     } else {
